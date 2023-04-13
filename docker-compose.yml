@@ -4,3 +4,12 @@ services:
     image: calculator-app
     ports:
       - "3000:3000"
+    healthcheck:
+      # Use curl to make a request to the /health endpoint of the app
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      # Check the health status every 1 minute
+      interval: 1m
+      # Wait up to 10 seconds for a response from the health check
+      timeout: 10s
+      # Allow up to 3 retries before considering the health check failed
+      retries: 3

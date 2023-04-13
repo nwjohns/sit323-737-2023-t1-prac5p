@@ -63,6 +63,11 @@ app.get("/calculate", (req, res) => {
     }
   });
 
+  app.get("/health", (req, res) => {
+    // Return a 200 OK response to indicate that the app is healthy
+    res.status(200).send("OK");
+  });
+
 app.listen(port, () => {
   console.log("Server listening on port " + port);
 });
